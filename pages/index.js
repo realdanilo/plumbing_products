@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { getById } from '../utils/dbMethods'
 
 
-export default function Home({material}) {
+export default function Home({data}) {
   const [materialId, SetMaterialId] = useState()
   const router = useRouter()
   const handleSubmit = e => {
@@ -20,13 +20,18 @@ export default function Home({material}) {
        <input  type="text" minLength="0" required  onChange={(e)=> SetMaterialId(e.target.value)}/>
        <button>find</button>
      </form>
-    
+     {/* if there is material, show pic + desc */}
+    {data && (
+      <>
+      <p>{data.materialId}</p>
+      <p>{data.description}</p>
+      </>
+    )}
     </div>
   )
 }
 export async function getServerSideProps({query:{id}}){
  let res = await getById(id) 
- console.log(res);
- return {props: {data: {name:"test"}}}
+ return {props: {data: JSON.parse(JSON.stringify(res))}}
 
 }
