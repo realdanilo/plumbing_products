@@ -1,5 +1,3 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import {useRouter} from "next/router"
 import { useState } from 'react'
@@ -24,7 +22,7 @@ export default function Home({data}) {
      {/* if there is material, show pic + desc */}
     {data && (
       <div className={styles.infoGraph}>
-        <Image src={data.imageURL} alt={data.description}/>
+        <img src={data.imageURL} alt={data.description}/>
         <h3>{data.description}</h3>
         <p>{data.categoryName}</p>
         <p>{data.subCategory}</p>
