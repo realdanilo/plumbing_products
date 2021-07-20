@@ -11,7 +11,7 @@ async function main(){
         useCreateIndex: true
       });
       // const resp = {
-      //   materialId: "12345",
+      //   materialID: "12345678",
       //   description:"this is a test"
       // }
       // const r = await Product.create(resp)

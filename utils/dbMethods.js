@@ -6,7 +6,7 @@ import main from "./dbConnection"
        if(mongoose.connection.readyState == 0){
            await main()
        }
-        let product=  await Product.findOne({materialId: id})
+        let product=  await Product.findOne({materialID: id})
         return product
     } catch (error) {
         console.log(error);

@@ -4,10 +4,11 @@ import styles from '../styles/Home.module.css'
 import {useRouter} from "next/router"
 import { useState } from 'react'
 import { getById } from '../utils/dbMethods'
+import main from '../utils/dbConnection'
 
 
 export default function Home({data}) {
-  const [materialId, SetMaterialId] = useState()
+  const [materialId, SetMaterialId] = useState("1000")
   const router = useRouter()
   const handleSubmit = e => {
     e.preventDefault()
@@ -17,13 +18,13 @@ export default function Home({data}) {
   return (
     <div className={styles.container}>
      <form onSubmit={handleSubmit} >
-       <input  type="text" minLength="0" required  onChange={(e)=> SetMaterialId(e.target.value)}/>
+       <input  type="text" minLength="8" autoFocus={true} required  onChange={(e)=> SetMaterialId(e.target.value)}/>
        <button>find</button>
      </form>
      {/* if there is material, show pic + desc */}
     {data && (
       <>
-      <p>{data.materialId}</p>
+      <p>{data.materialID}</p>
       <p>{data.description}</p>
       </>
     )}
