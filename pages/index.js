@@ -8,7 +8,8 @@ import main from '../utils/dbConnection'
 
 
 export default function Home({data}) {
-  const [materialId, SetMaterialId] = useState("1000")
+  const initID = data ? data.materialID : "1000"
+  const [materialId, SetMaterialId] = useState(initID)
   const router = useRouter()
   const handleSubmit = e => {
     e.preventDefault()
@@ -18,15 +19,18 @@ export default function Home({data}) {
   return (
     <div className={styles.container}>
      <form onSubmit={handleSubmit} >
-       <input  type="text" minLength="8" autoFocus={true} required  onChange={(e)=> SetMaterialId(e.target.value)}/>
-       <button>find</button>
+       <input  type="text" minLength="8" value={materialId} autoFocus={true} required  onChange={(e)=> SetMaterialId(e.target.value)}/>
      </form>
      {/* if there is material, show pic + desc */}
     {data && (
-      <>
-      <p>{data.materialID}</p>
-      <p>{data.description}</p>
-      </>
+      <div className={styles.infoGraph}>
+        <img src={data.imageURL} alt={data.description}/>
+        <h3>{data.description}</h3>
+        <p>{data.categoryName}</p>
+        <p>{data.subCategory}</p>
+
+
+      </div>
     )}
     </div>
   )

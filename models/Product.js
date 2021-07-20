@@ -9,6 +9,20 @@ const productSchema = new mongoose.Schema({
     subCategory: String
 });
 
+let Product
 
-let Product = mongoose.model("Product",productSchema) || mongoose.models.Product;
+function modelAlreadyCreated(){
+    try{
+        Product = mongoose.model("Product")
+        return true
+    }catch(e){
+        console.log(e);
+        return false
+    }
+}
+if(!modelAlreadyCreated()){
+    Product = mongoose.model("Product", productSchema)
+}
+
+//let Product = mongoose.model("Product",productSchema) || mongoose.models.Product;
 export default Product
