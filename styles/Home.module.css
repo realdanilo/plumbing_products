@@ -1,11 +1,9 @@
 .container {
-  min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 100vh;
   margin: 20px;
 }
 .container form {
@@ -33,7 +31,7 @@
 .infoGraph img{
   width: 100%;
   max-width: 500px;
-  max-height: 800px;
+  max-height: 50vh;
   object-fit: contain;
 }
 
