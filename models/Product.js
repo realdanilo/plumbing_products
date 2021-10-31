@@ -16,7 +16,6 @@ function modelAlreadyCreated(){
         Product = mongoose.model("Product")
         return true
     }catch(e){
-        console.log(e);
         return false
     }
 }

@@ -14,3 +14,16 @@ a {
 * {
   box-sizing: border-box;
 }
+.global-button{
+  margin: 30px;
+  height: 70px;
+  font-size: 18px;
+  background-color: rgba(111, 173, 249,.2);
+  border:none;
+  width:70%;
+}
+
+.global-button:hover{
+  border: 1px solid black;
+  cursor: pointer;
+}
