@@ -3,7 +3,7 @@ import {useRouter} from "next/router"
 import { useEffect, useState } from 'react'
 import { getByDescription } from '../utils/dbMethods'
 import main from '../utils/dbConnection'
-import Product from '../components/product'
+import Product from '../components/Product'
 import Head from "next/head"
 
 export default function Search({data}) {
