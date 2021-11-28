@@ -11,7 +11,7 @@ export default function MainForm() {
     e.preventDefault();
     setSearchType(typeOfSearch(searchInput))
     setLoading(true)
-    router.push(`indextest?searchType=${typeOfSearch(searchInput)}&searchInput=${searchInput}`)
+    router.push(`/?searchType=${typeOfSearch(searchInput)}&searchInput=${searchInput}`)
   };
   return (
     <div className={styles.container}>

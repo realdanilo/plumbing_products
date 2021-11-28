@@ -1,60 +1,64 @@
-import styles from '../styles/Home.module.css'
-import {useRouter} from "next/router"
-import { useEffect, useState } from 'react'
-import { getById } from '../utils/dbMethods'
-import main from '../utils/dbConnection'
-import Head from "next/head"
+import styles from "../styles/Home.module.css";
+import { useEffect } from "react";
+import { getByDescription, getById } from "../utils/dbMethods";
+import MainForm from "../components/MainForm";
+import { useContext } from "react";
+import { MainContext } from "../utils/MainContext";
+import MaterialSKU from "../components/MaterialSKU";
+import MaterialDescription from "../components/MaterialDescription";
+import Layout from "../components/Layout"
+import { useRouter } from 'next/router'
 
-
-export default function Home({data}) {
+export default function Home(props) {
   const router = useRouter()
-  const initID = data ? data.materialID : "1000"
-  const [materialId, SetMaterialId] = useState(initID)
-  const [loading, setLoading] = useState(false)
+  let appFirstLoad = router.asPath == "/"
+  let data = props.result?.data;
+  let res = data ? data.res : null 
+  const { loading, setLoading } = useContext(MainContext);
+  useEffect(() => {
+    setLoading(data?.loading);
+  }, [data]);
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    setLoading(true)
-    router.push(`/?id=${materialId}`)
-    //setTimeout(()=>{setLoading(false)}, 1000)
-  }
-  useEffect(()=>{
-    setLoading(!(router.query.id == (data?.materialID)))
-    if(data ==null) setLoading(false)
-  },[router.query])
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>{data ? data.description : "Van Marcke"}</title>
-      </Head>
-     <form onSubmit={handleSubmit} >
-       <input  type="number" minLength="8" value={materialId} autoFocus={true} required  onChange={(e)=> SetMaterialId(e.target.value)}/>
-     </form>
+    <Layout>
+      <MainForm />
       {/* if loading */}
-      {loading && (<div className={styles.loader}></div>)}
-      {/* if data is null */}
-      {((data == null) && (router.query.id))&& (<h3>{router.query.id} not found</h3>)}
-      {/* if there is material, show pic + desc */}
-      {(!loading && data) && (
-        <div className={styles.infoGraph}>
-          <img src={data.imageURL} alt={data.description}/>
-          <h3>{data.description}</h3>
-          <p>{data.categoryName}</p>
-          <p>{data.subCategory}</p>
-
-
-        </div>
+      {loading && <div className={styles.loader} />}
+      {/* if error */}
+      {data && data.error && <p>{data.message}</p>}
+      {/* if search was completed but no products were found */}
+      {res ==null && !appFirstLoad && <p>Not found</p>}
+      {/* if SKU */}
+      {res && data.searchType == "SKU" && <MaterialSKU product={data.res} />}
+      {/* if description */}
+      {res && data.searchType == "description" && (
+        <MaterialDescription products={data.res} />
       )}
-           <button onClick={(e)=> {
-      e.preventDefault()
-      router.push("/search")
-    }} className="global-button">Search by Description</button>
-    </div>
-  )
+    </Layout>
+  );
 }
-export async function getServerSideProps({query:{id}}){
- let res = await getById(id) 
- return {props: {data: JSON.parse(JSON.stringify(res))}}
+export async function getServerSideProps({
+  req,
+  query: { searchType, searchInput },
+}) {
+  if (!searchInput || !searchType || req.method != "GET") return { props: {} };
 
+  let data = { loading: true, searchInput, products:null, product:null,searchType};
+
+  if (searchType == "description") {
+    //search by description
+    let res = await getByDescription(searchInput);
+    if(res.length ==0 ) res = null
+    data = { ...data, loading: false, res };
+  } else if (searchType == "SKU") {
+    //search by SKU
+    let res = await getById(searchInput);
+    data = { ...data, loading: false, res };
+  } else {
+    //return error
+    data = { error: true, message: "Search Verification Error, Contact Dan" };
+  }
+
+  return { props: { result: JSON.parse(JSON.stringify({ data })) } };
 }

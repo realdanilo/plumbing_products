@@ -2,7 +2,7 @@ import styles from "../styles/Product.module.css"
 import Link from "next/link"
 const Product = ({product})=>{
     return(
-        <Link href={`/indextest?searchType=SKU&searchInput=${product.materialID}`}>
+        <Link href={`/?searchType=SKU&searchInput=${product.materialID}`}>
             <a>
             <div className={styles.productContainer}>
                 <img src={product.imageURL} alt={product.description}/>
