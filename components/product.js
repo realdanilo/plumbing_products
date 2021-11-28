@@ -1,12 +1,13 @@
-import styles from "../styles/Home.module.css"
+import styles from "../styles/Product.module.css"
 import Link from "next/link"
-const Product = (product)=>{
+const Product = ({product})=>{
     return(
-        <Link href={`/?id=${product.materialID}`}>
+        <Link href={`/indextest?searchType=SKU&searchInput=${product.materialID}`}>
             <a>
             <div className={styles.productContainer}>
                 <img src={product.imageURL} alt={product.description}/>
                 <h5>{product.description}</h5>
+                <h5>{product.materialID}</h5>
             </div>
             </a>
         </Link>

@@ -1,9 +1,10 @@
-import React from 'react'
+import styles from "../styles/MaterialDescription.module.css"
+import Product from "../components/Product"
 
 const MaterialDescription = ({products}) => {
     return (
-        <div>
-            {products.map(p => <p>{p.description} - {p.materialID} </p>)}
+        <div className={styles.productsContainer}>
+            {products.map(p => <Product product={p} key={p.materialID}/>)}
         </div>
     )
 }
