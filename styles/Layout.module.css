@@ -1,0 +1,8 @@
+.mainLayout{
+    max-width: 900px;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    /* background: black; */
+    margin: 0 auto;
+}

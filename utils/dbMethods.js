@@ -24,7 +24,7 @@ export const  getByDescription = async (search) => {
        search = search.replace(pattern,"")
        let products=  await Product.
             find({ description: { $regex: `${search}`, $options: 'sig' } } ).
-            limit(15)
+            limit(100)
 
         // console.log(product);
         // console.log(search);
