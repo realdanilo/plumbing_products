@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import Product from "../models/product"
+import Product from "../models/Product"
 
 async function main(){
   try{
