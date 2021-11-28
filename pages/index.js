@@ -8,6 +8,7 @@ import MaterialSKU from "../components/MaterialSKU";
 import MaterialDescription from "../components/MaterialDescription";
 import Layout from "../components/Layout"
 import { useRouter } from 'next/router'
+import MetaSearchEngine from "../components/MetaSearchEngine";
 
 export default function Home(props) {
   const router = useRouter()
@@ -22,6 +23,7 @@ export default function Home(props) {
 
   return (
     <Layout>
+      <MetaSearchEngine title={appFirstLoad ? "Product Search" :`Searching: ${router.query.searchInput}`}/>
       <MainForm />
       {/* if loading */}
       {loading && <div className={styles.loader} />}

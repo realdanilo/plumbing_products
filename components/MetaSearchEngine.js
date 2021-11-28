@@ -10,6 +10,7 @@ const MetaSearchEngine = ({ title, description }) => {
         <meta httpEquiv="content-language" content="en-us" />
         <meta name="keywords" content="Van Marcke, Plumbing Supplies" />
         <meta name="author" content="Danilo Mera" />
+        <meta name="developer" content="Danilo Mera" />
       </Head>
     </div>
   );
