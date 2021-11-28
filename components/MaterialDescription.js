@@ -1,5 +1,5 @@
 import styles from "../styles/MaterialDescription.module.css"
-import Product from "../components/Product"
+import Product from "../components/product"
 
 const MaterialDescription = ({products}) => {
     return (
