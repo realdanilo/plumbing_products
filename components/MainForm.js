@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { MainContext } from "../utils/MainContext";
 import typeOfSearch from "../utils/typeOfSearch";
 import { useRouter } from "next/router";
+import styles from "../styles/MainForm.module.css"
+
 export default function MainForm() {
   const router = useRouter()
   const { searchInput, setSearchInput,setSearchType, setLoading } = useContext(MainContext);
@@ -12,6 +14,7 @@ export default function MainForm() {
     router.push(`indextest?searchType=${typeOfSearch(searchInput)}&searchInput=${searchInput}`)
   };
   return (
+    <div className={styles.container}>
     <form onSubmit={handleSearchSubmit}>
       <input
         type="text"
@@ -21,5 +24,6 @@ export default function MainForm() {
         required={true}
       />
     </form>
+    </div>
   );
 }
