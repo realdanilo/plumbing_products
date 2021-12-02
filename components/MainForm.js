@@ -22,6 +22,8 @@ export default function MainForm() {
         value={searchInput }
         onChange={(e) => setSearchInput(e.target.value)}
         required={true}
+        autoFocus={true}
+        placeholder="Search by SKU or Description"
       />
     </form>
     </div>

@@ -30,11 +30,11 @@ export default function Home(props) {
       {/* if error */}
       {data && data.error && <p>{data.message}</p>}
       {/* if search was completed but no products were found */}
-      {res ==null && !appFirstLoad && <p>Not found</p>}
+      {res ==null && !appFirstLoad && <p className={styles.notFound}>Not found</p>}
       {/* if SKU */}
-      {res && data.searchType == "SKU" && <MaterialSKU product={data.res} />}
+      {!loading && res && data.searchType == "SKU" && <MaterialSKU product={data.res} />}
       {/* if description */}
-      {res && data.searchType == "description" && (
+      {!loading && res && data.searchType == "description" && (
         <MaterialDescription products={data.res} />
       )}
     </Layout>

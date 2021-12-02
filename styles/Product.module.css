@@ -7,7 +7,7 @@
     text-align: center;
   }
   .productContainer:hover{
-    box-shadow: 0 0 21px rgba(10, 35, 222, 0.19); 
+    box-shadow: 0 0 10px rgba(2, 4, 18, 0.098); 
     transition: ease-in-out .35s;
 
   }
@@ -15,7 +15,7 @@
     width: 300px;
     max-height: 200px;
     object-fit: contain;
-    border-radius: 30%;
+    border-radius: 10%;
   }
   .productContainer h5{
       padding: 0 5px;
