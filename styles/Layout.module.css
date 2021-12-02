@@ -8,3 +8,9 @@
     /* background: black; */
     margin: 0 auto;
 }
+
+.mainNav{
+    display: flex;
+    margin: 20px 0;
+    justify-content: space-between;
+}
