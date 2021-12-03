@@ -1,0 +1,15 @@
+.mainAddToCart{
+    /* background-color: red; */
+}
+.mainAddToCart input{
+    width: 45px;
+    border: none;
+}
+.mainAddToCart input:focus{
+    outline: none;
+}
+.mainAddToCart button{
+    background-color: white;
+    border: 1px solid rgba(0,0,0,.2);
+    padding: 3px 15px;
+}

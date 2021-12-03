@@ -15,6 +15,8 @@ const HeaderNav = () => {
             Log Out
           </p>
           <Link href="/cart">Cart</Link>
+          <Link href="/">Home</Link>
+
         </>
       ) : (
         <>

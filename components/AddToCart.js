@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import { MainContext } from "../utils/MainContext";
 import { Add, Update } from "../utils/AddToCartHelpers";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
+import styles from "../styles/AddToCart.module.css";
 
 const AddToCart = ({ product }) => {
   const { cart, setCart } = useContext(MainContext);
@@ -12,16 +13,27 @@ const AddToCart = ({ product }) => {
   let newCartProducts = [];
   //add or update on cart
   if (cart.products.length == 0 || !foundProduct) {
-    newCartProducts = Add(product = { SKU: product.materialID, description: product.description, quantity, price:17 },cart)
+    newCartProducts = Add(
+      (product = {
+        SKU: product.materialID,
+        description: product.description,
+        quantity,
+        price: 17,
+      }),
+      cart
+    );
   } else {
-    newCartProducts = Update(product = {SKU:foundProduct.SKU, quantity },cart)
+    newCartProducts = Update(
+      (product = { SKU: foundProduct.SKU, quantity }),
+      cart
+    );
   }
   const handleAddToCart = (e) => {
     e.preventDefault();
     setCart({
       ...cart,
-      products: newCartProducts
-    })
+      products: newCartProducts,
+    });
     toast.success("Success", {
       position: "bottom-right",
       autoClose: 1000,
@@ -31,18 +43,26 @@ const AddToCart = ({ product }) => {
       draggable: true,
       progress: undefined,
     });
-  }
+  };
   return (
-    <form onSubmit={handleAddToCart}>
-      <label>Qty: </label>
-      <input
-        type="number"
-        min={1}
-        value={quantity}
-        onChange={(e) => setQuantity(parseInt(e.target.value))}
-      />
-       <button onClick={handleAddToCart}>{foundProduct == undefined ? "Add" : foundProduct?.quantity != quantity ? "Update" : "Updated" }</button>
-    </form>
+    <div className={styles.mainAddToCart}>
+      <form onSubmit={handleAddToCart}>
+        <label>Qty: </label>
+        <input
+          type="number"
+          min={1}
+          value={quantity}
+          onChange={(e) => setQuantity(parseInt(e.target.value))}
+        />
+        <button onClick={handleAddToCart}>
+          {foundProduct == undefined
+            ? "Add"
+            : foundProduct?.quantity != quantity
+            ? "Update"
+            : "Updated"}
+        </button>
+      </form>
+    </div>
   );
 };
 

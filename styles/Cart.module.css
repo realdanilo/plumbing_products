@@ -1,0 +1,45 @@
+.cartCheckout {
+  display: block;
+}
+.cartCheckout h1 {
+  text-align: center;
+  font-weight: 100;
+}
+
+.cartCheckout ol li {
+    margin: 0 0 45px 0;
+}
+.cartCheckout ol li p{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.cartCheckout ol li small {
+  margin: 0 10px;
+}
+.cartCheckout ol li small:last-child {
+  margin: 0 10px;
+  border: 1px solid rgba(0,0,0,.3);
+  padding: 5px 10px;
+}
+.cartCheckout ol li small:last-child:hover {
+  color: white;
+  background-color: rgba(228, 7, 7, 0.749);
+  cursor: pointer;
+
+}
+
+.cartCheckout ol li input {
+  width: 50px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.cartCheckout ol li input:focus {
+  outline: none;
+}
+
+.cartCheckout h6{
+    font-size: 23px;
+    font-weight: 100;
+    margin: 10px 0;
+}
