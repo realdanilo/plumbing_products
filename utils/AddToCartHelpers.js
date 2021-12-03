@@ -1,6 +1,13 @@
-export const Add = (product, arr =[])=>{
-    return [...arr,{product}]
-}
-export const Update = (product, arr = [])=>{
-    return arr.map(p => p.SKU == product.SKU ? {...p} : p)
-}
+// cart = mainContext
+// product = The entire complete, as NEW object.
+// ie { SKU: product.materialID, description: product.description, quantity }
+export const Add = (product, cart = []) => {
+  return [...cart.products, { ...product }];
+};
+export const Update = (product, cart = []) => {
+  return [
+    ...cart.products.map((p) =>
+      p.SKU == product.SKU ? { ...p,...product} : p
+    ),
+  ];
+};
