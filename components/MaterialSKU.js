@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useCallback, useContext } from "react";
 import styles from "../styles/MaterialSKU.module.css";
 import MetaSearchEngine from "./MetaSearchEngine";
 import AddToCart from "./AddToCart";
+import { MainContext } from "../utils/MainContext";
+
 const MaterialSKU = ({ product }) => {
+  const { user } = useContext(MainContext);
+
   return (
     <>
       <MetaSearchEngine title={product.description} />
@@ -12,7 +16,7 @@ const MaterialSKU = ({ product }) => {
         </div>
         <h2>{product.description}</h2>
         <h3>{product?.categoryName}</h3>
-        <AddToCart product={product} />
+        {user ? <AddToCart product={product} /> : <p>Log in to add to cart</p>}
       </div>
     </>
   );

@@ -30,7 +30,7 @@ const AddToCart = ({ product }) => {
         value={quantity}
         onChange={(e) => setQuantity(parseInt(e.target.value))}
       />
-       <button onClick={handleAddToCart}>{foundProduct?.quantity != quantity ? "Update" : foundProduct?.quantity == quantity ? "Updated!" : "Add"}</button>
+       <button onClick={handleAddToCart}>{foundProduct == undefined ? "Add" : foundProduct?.quantity != quantity ? "Update" : "Updated" }</button>
     </form>
   );
 };

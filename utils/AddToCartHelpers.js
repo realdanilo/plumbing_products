@@ -11,3 +11,4 @@ export const Update = (product, cart = []) => {
     ),
   ];
 };
+export const Delete = (product, cart = []) => cart.products.filter(p => p.SKU != product.SKU)
