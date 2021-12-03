@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { MainContext } from "../utils/MainContext";
 import { Add, Update } from "../utils/AddToCartHelpers";
+import {  toast } from "react-toastify";
 
 const AddToCart = ({ product }) => {
   const { cart, setCart } = useContext(MainContext);
@@ -20,7 +21,17 @@ const AddToCart = ({ product }) => {
     setCart({
       ...cart,
       products: newCartProducts
-    })}
+    })
+    toast.success("Success", {
+      position: "bottom-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
   return (
     <form onSubmit={handleAddToCart}>
       <label>Qty: </label>

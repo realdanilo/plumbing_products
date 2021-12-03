@@ -18,6 +18,7 @@ const HeaderNav = () => {
         </>
       ) : (
         <>
+          <Link href="/">Home</Link>
           <Link href="/register">Register</Link>
           <Link href="/login">Log In</Link>
         </>

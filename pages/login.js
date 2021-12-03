@@ -3,6 +3,9 @@ import Layout from '../components/Layout'
 import style from "../styles/Login.module.css"
 import { MainContext } from '../utils/MainContext'
 import { useRouter } from 'next/router'
+import MetaSearchEngine from "../components/MetaSearchEngine"
+import {  toast } from "react-toastify";
+
 
 const Login = () => {
     const router = useRouter()
@@ -15,11 +18,21 @@ const Login = () => {
     const {setUser }= useContext(MainContext)
     const handleSubmitForm = e =>{
         e.preventDefault()
+        toast.info("Welcome back", {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         setUser({email:formInfo.email,ID: Math.floor(Math.random()*100)+1 })
         router.push("/")
     }
     return (
         <Layout>
+            <MetaSearchEngine/>
             <div className={style.formContainer}>
                 <form onSubmit={handleSubmitForm}>
                     <label htmlFor="email">Email</label>

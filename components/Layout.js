@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from "../styles/Layout.module.css"
 import HeaderNav from './HeaderNav'
+import { ToastContainer } from "react-toastify";
 
 
 export const Layout = ({children}) => {
@@ -11,6 +12,7 @@ export const Layout = ({children}) => {
                <HeaderNav/>
             </nav>
             {children}
+            <ToastContainer/>
         </div>
     )
 }

@@ -3,6 +3,9 @@ import Layout from '../components/Layout'
 import style from "../styles/Register.module.css"
 import { MainContext } from '../utils/MainContext'
 import { useRouter } from 'next/router'
+import MetaSearchEngine from "../components/MetaSearchEngine"
+import {  toast } from "react-toastify";
+
 
 const Register = () => {
     const router = useRouter()
@@ -23,12 +26,22 @@ const Register = () => {
         setUser({email:formInfo.email,ID: Math.floor(Math.random()*100)+1 })
         //fake api on creating user
         setFauxCreation(false)
+        toast.success("Success", {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         //wait 2 sec
-        sleep(1000).then(()=> router.push("/"))
+        sleep(2000).then(()=> router.push("/"))
         
     }
     return (
         <Layout>
+            <MetaSearchEngine/>
             <div className={style.formContainer}>
                 <form onSubmit={handleSubmitForm}> 
                     <h1 hidden={fauxCreation}>Creating user...</h1>
