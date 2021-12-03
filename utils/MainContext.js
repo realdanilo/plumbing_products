@@ -7,6 +7,7 @@ export const MainContextProvider = ({children}) => {
     const [searchType, setSearchType] = useState("")
     const [loading, setLoading] = useState(null)
     const [user, setUser] = useState(null)
+    const [cart, setCart] = useState({total:0, products:[]})
 
-    return <MainContext.Provider value={{searchInput, setSearchInput, loading,setLoading, searchType,setSearchType, user, setUser}}>{children}</MainContext.Provider>
+    return <MainContext.Provider value={{searchInput, setSearchInput, loading,setLoading, searchType,setSearchType, user, setUser, cart, setCart}}>{children}</MainContext.Provider>
 }
