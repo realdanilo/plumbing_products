@@ -5,7 +5,9 @@
   text-align: center;
   font-weight: 100;
 }
-
+.empty{
+  text-align: center;
+}
 .cartCheckout ol li {
     margin: 0 0 45px 0;
 }
@@ -32,14 +34,28 @@
   width: 50px;
   border: none;
   border-bottom: 1px solid black;
+  font-size: 17px;
+  padding: 0;
 }
 
 .cartCheckout ol li input:focus {
   outline: none;
+  padding: 0;
+
 }
 
+.cartCheckout .totalCalc{
+  margin: 0 auto;
+  text-align: center;
+}
 .cartCheckout h6{
     font-size: 23px;
     font-weight: 100;
     margin: 10px 0;
+}
+@media only screen and (min-width: 800px) {
+  .cartCheckout .totalCalc, .empty{
+  text-align: left;
+  margin-left: 20px;
+  }
 }

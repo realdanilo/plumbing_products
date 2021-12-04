@@ -32,8 +32,8 @@ const Login = () => {
     }
     return (
         <Layout>
-            <MetaSearchEngine/>
-            <div className={style.formContainer}>
+            <MetaSearchEngine title="Login VMTS"/>
+            <div className={style.loginContainer}>
                 <form onSubmit={handleSubmitForm}>
                     <label htmlFor="email">Email</label>
                     <input type="email" name="email" required={true} value={formInfo.email} onChange={(e)=> handleInputChange(e)}/>

@@ -2,11 +2,15 @@
     /* background-color: red; */
 }
 .mainAddToCart input{
-    width: 45px;
+    width: 55px;
     border: none;
+    font-size: 17px;
+    padding: 0;
+
 }
 .mainAddToCart input:focus{
     outline: none;
+    padding: 0;
 }
 .mainAddToCart button{
     background-color: white;

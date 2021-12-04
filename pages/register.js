@@ -41,8 +41,8 @@ const Register = () => {
     }
     return (
         <Layout>
-            <MetaSearchEngine/>
-            <div className={style.formContainer}>
+            <MetaSearchEngine title="Register VMTS"/>
+            <div className={style.registerContainer}>
                 <form onSubmit={handleSubmitForm}> 
                     <h1 hidden={fauxCreation}>Creating user...</h1>
                     <label htmlFor="email">Email</label>

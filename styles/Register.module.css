@@ -1,23 +1,24 @@
-.formContainer{
+.registerContainer{
     display: flex;
     justify-content: center;
 }
-.formContainer form{
+.registerContainer form{
     width: 100%;
     max-width: 600px;
 }
-.formContainer label{
+.registerContainer label{
     display: block;
     margin: 10px 0;
     width: 100%;
 }
-.formContainer input{
+.registerContainer input{
     margin-bottom: 20px;
     padding: 10px;
     width: 100%;
     border: 1px solid rgba(0,0,0,.3);
+    font-size: 17px;
 }
-.formContainer button{
+.registerContainer button{
     display: block;
     margin: 20px auto;
     width: 100%;
@@ -25,6 +26,6 @@
     background-color: white;
     border: 1px solid rgba(0,0,0,.3);
 }
-.formContainer button:hover{
+.registerContainer button:hover{
     cursor: pointer;
 }

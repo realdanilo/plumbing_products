@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Link from "next/link";
 import { MainContext } from "../utils/MainContext";
+import styles from "../styles/HeaderNav.module.css"
 
 const HeaderNav = () => {
   const { user, setUser } = useContext(MainContext);
@@ -8,24 +9,24 @@ const HeaderNav = () => {
     setUser(null);
   };
   return (
-    <>
+    <div className={styles.headerNav}>
       {user ? (
         <>
+          <Link href="/"><a>Home</a></Link>
+          <Link href="/cart"><a>Cart</a></Link>
           <p style={{ margin: 0 }} onClick={handleLogOut}>
             Log Out
           </p>
-          <Link href="/cart">Cart</Link>
-          <Link href="/">Home</Link>
 
         </>
       ) : (
         <>
-          <Link href="/">Home</Link>
-          <Link href="/register">Register</Link>
-          <Link href="/login">Log In</Link>
+          <Link href="/"><a>Home</a></Link>
+          <Link href="/register"><a>Register</a></Link>
+          <Link href="/login"><a>Log In</a></Link>
         </>
       )}
-    </>
+    </div>
   );
 };
 

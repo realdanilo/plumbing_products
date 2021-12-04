@@ -47,8 +47,9 @@ const AddToCart = ({ product }) => {
   return (
     <div className={styles.mainAddToCart}>
       <form onSubmit={handleAddToCart}>
-        <label>Qty: </label>
+        <label htmlFor="quantity">Qty: </label>
         <input
+          name="quantity"
           type="number"
           min={1}
           value={quantity}
