@@ -58,10 +58,10 @@ const Cart = () => {
         </ol>
         {user && cart.products.length > 0 && (
           <div className={styles.totalCalc}>
-            <h6>Total: {cart.total}</h6>
+            <h6>$ Total: {cart.total}</h6>
             <h6>Taxes: 8.3%</h6>
             <h6>
-              Final: {Math.round((cart.total * 1.083 * 10) / 10).toFixed(2)}
+              $ Final: {Math.round((cart.total * 1.083 * 10) / 10).toFixed(2)}
             </h6>
           </div>
         )}
