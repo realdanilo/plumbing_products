@@ -4,7 +4,7 @@ import { MainContext } from "../utils/MainContext";
 import styles from "../styles/HeaderNav.module.css"
 
 const HeaderNav = () => {
-  const { user, setUser } = useContext(MainContext);
+  const { user, setUser, cart:{products}} = useContext(MainContext);
   const handleLogOut = (e) => {
     setUser(null);
   };
@@ -13,7 +13,7 @@ const HeaderNav = () => {
       {user ? (
         <>
           <Link href="/"><a>Home</a></Link>
-          <Link href="/cart"><a>Cart</a></Link>
+          <Link href="/cart"><a>Cart ({products.length})</a></Link>
           <p style={{ margin: 0 }} onClick={handleLogOut}>
             Log Out
           </p>
