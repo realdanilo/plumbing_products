@@ -33,12 +33,13 @@
 .cartCheckout ol li input {
   width: 50px;
   border: none;
-  border-bottom: 1px solid black;
   font-size: 17px;
   padding: 0;
 }
 
 .cartCheckout ol li input:focus {
+  border: none;
+  outline-style: none;
   outline: none;
   padding: 0;
 

@@ -7,7 +7,7 @@ export const MainContextProvider = ({children}) => {
     const [searchInput, setSearchInput] = useState("")
     const [searchType, setSearchType] = useState("")
     const [loading, setLoading] = useState(null)
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState({ID:null, email:"test@gmail.com"})
     const [cart, setCart] = useState({total:0, products:[]})
 
     useEffect(()=>{

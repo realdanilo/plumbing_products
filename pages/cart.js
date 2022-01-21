@@ -10,6 +10,8 @@ import Link from "next/link";
 const Cart = () => {
   const { cart, setCart, user } = useContext(MainContext);
   const handleChange = (e) => {
+    console.log(e.target.value)
+    if (parseInt(e.target.value) == NaN || e.target.value == "" ) e.target.value =0
     let SKU = e.target.getAttribute("data-sku");
     let updatedQty = Update({ SKU, quantity: parseInt(e.target.value) }, cart);
     setCart({ ...cart, products: updatedQty });
@@ -20,7 +22,7 @@ const Cart = () => {
     setCart({ ...cart, products: updatedProducts });
     toast.warning("Deleted", {
       position: "bottom-right",
-      autoClose: 2000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -48,6 +50,7 @@ const Cart = () => {
                   value={p.quantity}
                   data-sku={p.SKU}
                   onChange={handleChange}
+                  required={true}
                 />
                 <small>Price: {p.price}</small>
                 <small data-sku={p.SKU} onClick={handleDelete}>

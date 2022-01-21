@@ -28,7 +28,7 @@ const Register = () => {
         setFauxCreation(false)
         toast.success("Success", {
             position: "bottom-right",
-            autoClose: 2000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,

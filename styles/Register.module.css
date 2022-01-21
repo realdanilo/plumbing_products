@@ -3,7 +3,7 @@
     justify-content: center;
 }
 .registerContainer form{
-    width: 100%;
+    width: 80%;
     max-width: 600px;
 }
 .registerContainer label{
@@ -29,3 +29,9 @@
 .registerContainer button:hover{
     cursor: pointer;
 }
+@media only screen and (min-width: 800px) {
+    .registerContainer form{
+        width: 100%;
+        max-width: 600px;
+    }
+  }
