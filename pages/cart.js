@@ -10,7 +10,6 @@ import Link from "next/link";
 const Cart = () => {
   const { cart, setCart, user } = useContext(MainContext);
   const handleChange = (e) => {
-    console.log(e.target.value)
     if (parseInt(e.target.value) == NaN || e.target.value == "" ) e.target.value =0
     let SKU = e.target.getAttribute("data-sku");
     let updatedQty = Update({ SKU, quantity: parseInt(e.target.value) }, cart);
@@ -46,7 +45,7 @@ const Cart = () => {
                 <small>Qty: </small>
                 <input
                   type="number"
-                  min={1}
+                  min={0}
                   value={p.quantity}
                   data-sku={p.SKU}
                   onChange={handleChange}

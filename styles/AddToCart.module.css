@@ -9,6 +9,8 @@
 
 }
 .mainAddToCart input:focus{
+    border: none;
+    outline-style: none;
     outline: none;
     padding: 0;
 }
