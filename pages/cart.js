@@ -40,7 +40,7 @@ const Cart = () => {
             cart.products.map((p) => (
               <li key={p.SKU}>
                 <Link href={`/?searchType=SKU&searchInput=${p.SKU}`}>
-                  <p>{p.description}</p>
+                  <p className={styles.skuLink}>{p.description}</p>
                 </Link>
                 <small>Qty: </small>
                 <input
@@ -60,10 +60,11 @@ const Cart = () => {
         </ol>
         {user && cart.products.length > 0 && (
           <div className={styles.totalCalc}>
-            <h6>$ Total: {cart.total}</h6>
+            <hr className={styles.hr}/>
+            <h6>$ Total: {cart.total.toLocaleString()}</h6>
             <h6>Taxes: 8.3%</h6>
             <h6>
-              $ Final: {Math.round((cart.total * 1.083 * 10) / 10).toFixed(2)}
+              $ Final: {Math.round((cart.total * 1.083 * 10) / 10).toLocaleString()}
             </h6>
           </div>
         )}
