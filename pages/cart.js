@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Layout from "../components/Layout";
 import { MainContext } from "../utils/MainContext";
 import { Update, Delete, CalculateTotal } from "../utils/AddToCartHelpers";
@@ -6,8 +6,11 @@ import { toast } from "react-toastify";
 import MetaSearchEngine from "../components/MetaSearchEngine";
 import styles from "../styles/Cart.module.css";
 import Link from "next/link";
+import { useRouter } from 'next/router'
 
 const Cart = () => {
+  const router = useRouter()
+  const [payModal, setPayModal] = useState(false)
   const { cart, setCart, user } = useContext(MainContext);
   const handleChange = (e) => {
     if (parseInt(e.target.value) == NaN || e.target.value == "" ) e.target.value =0
@@ -29,6 +32,22 @@ const Cart = () => {
       progress: undefined,
     });
   };
+
+  const submitPayment = () => {
+    toast.success("Submitted", {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    setTimeout(function() {
+      setCart({...cart,products:[]})
+    router.push("/")
+  }, 4000);
+  }
   return (
     <Layout>
       <MetaSearchEngine title="Cart" />
@@ -66,6 +85,23 @@ const Cart = () => {
             <h6>
               $ Final: {Math.round((cart.total * 1.083 * 10) / 10).toLocaleString()}
             </h6>
+            <button className={styles.payBtn} onClick={()=> setPayModal(true)}>Pay</button>
+          </div>
+        )}
+        {payModal && (
+          <div className={styles.payModal}>
+            <label htmlFor="name">Name:</label>
+            <input id="name" type="text" inputMode="text" value="Dan Mr Wonderful" disabled={true}/>
+            <label htmlFor="email">Emai:</label>
+            <input id="email" type="email" value={user.email} disabled={true}/>
+            <label htmlFor="street">Street:</label>
+            <input id="street" type="text" inputMode="text" value="Phoenix Downtown" disabled={true}/>
+            <label htmlFor="ccn">Credit Card Number:</label>
+            <input id="ccn" type="tel" inputMode="numeric" pattern="[0-9\s]{13,19}" 
+            autoComplete="cc-number" value="1111 2222 3333 4444"
+            maxLength="16" placeholder="1xxx x1xx xx1x xxx1" disabled={true}/>
+            <button onClick={()=> setPayModal(false)}>Go Back</button>
+            <button onClick={()=> submitPayment()}>Submit Payment</button>
           </div>
         )}
       </div>
