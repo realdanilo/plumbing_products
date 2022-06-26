@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect} from "react";
 import Layout from "../components/Layout";
 import { MainContext } from "../utils/MainContext";
 import { Update, Delete, CalculateTotal } from "../utils/AddToCartHelpers";
@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 const Cart = () => {
   const router = useRouter()
   const [payModal, setPayModal] = useState(false)
+  const [payButton, setPayButton] = useState(false)
   const { cart, setCart, user } = useContext(MainContext);
   const handleChange = (e) => {
     if (parseInt(e.target.value) == NaN || e.target.value == "" ) e.target.value =0
@@ -35,7 +36,7 @@ const Cart = () => {
 
   const submitPayment = () => {
     toast.success("Submitted", {
-      position: "bottom-right",
+      position: "top-center",
       autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -43,11 +44,18 @@ const Cart = () => {
       draggable: true,
       progress: undefined,
     });
-    setTimeout(function() {
-      setCart({...cart,products:[]})
-    router.push("/")
-  }, 4000);
   }
+
+  useEffect( () => {
+    if(payButton){
+      console.log("pay")
+      setCart({...cart,products:[]})
+      submitPayment()
+      return setTimeout(() => {
+        router.push("/")
+      }, 5500);
+    }
+  },[payButton])
   return (
     <Layout>
       <MetaSearchEngine title="Cart" />
@@ -101,7 +109,7 @@ const Cart = () => {
             autoComplete="cc-number" value="1111 2222 3333 4444"
             maxLength="16" placeholder="1xxx x1xx xx1x xxx1" disabled={true}/>
             <button onClick={()=> setPayModal(false)}>Go Back</button>
-            <button onClick={()=> submitPayment()}>Submit Payment</button>
+            <button onClick={()=> setPayButton(true)}>Submit Payment</button>
           </div>
         )}
       </div>
